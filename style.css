@@ -1,46 +1,45 @@
-@import url("https://fonts.googleapis.com/css?family=Oxanium|PT+Mono&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   box-sizing: border-box;
 }
 
 :root {
-  --primary-color: dodgerblue;
+  --primary-color: rgb(0, 92, 77);
   --select-color: dodgerblue;
   --success: rgb(15, 158, 2);
   --danger: rgb(214, 23, 23);
+  --myFont: "Figtree", sans-serif;
 }
 
 body {
   margin: 0;
-  font-family: PT Mono, sans-serif;
+  font-family: var(--myFont);
   overflow: hidden;
   display: flex;
   justify-content: center;
   height: 100vh;
-  background: #e8e8e8;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23161616' fill-opacity='0.1'%3E%3Cpath fill-rule='evenodd' d='M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: #003f32;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm20 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM10 37a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm10-17h20v20H20V20zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' fill='%230d8683' fill-opacity='0.09' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 .game-container {
-  border: 1px solid black;
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
   width: 530px;
-  height: 750px;
+  /* height: auto; */
   position: relative;
   background: rgba(255, 255, 255, 0.5);
   user-select: none;
   margin-top: 100px;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .header {
   background: var(--primary-color);
   color: white;
-  font-family: Oxanium, sans-serif;
+  font-family: var(--myFont);
   font-size: 24px;
-  text-shadow: 1px 2px 2px black;
-  letter-spacing: 2px;
-  height: 100px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,16 +47,16 @@ body {
 
 .card {
   margin: 5px auto 10px;
-  height: 600px;
+  /* height: 600px; */
 }
 
 /* Splash Page -------------------- */
 input[type="radio"] {
   opacity: 0;
-  width: 100%;
-  height: 75px;
+  width: 10%;
+  height: 65px;
   position: relative;
-  top: -40px;
+  /* top: -40px; */
   cursor: pointer;
   z-index: 2;
 }
@@ -65,22 +64,27 @@ input[type="radio"] {
 .selection-container {
   position: relative;
   top: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 .radio-container {
   width: 90%;
-  height: 75px;
   margin: 25px;
   cursor: pointer;
   border: 2px solid black;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 24px;
 }
 
 label {
-  position: relative;
-  top: 20px;
-  left: 20px;
-  font-size: 30px;
+  width: 30%;
+  font-size: 24px;
 }
 
 .selected-label {
@@ -89,14 +93,11 @@ label {
 }
 
 .best-score {
-  position: relative;
-  top: -100px;
-  left: 330px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   max-width: fit-content;
 }
 
