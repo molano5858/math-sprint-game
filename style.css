@@ -17,7 +17,6 @@ body {
   overflow: hidden;
   display: flex;
   justify-content: center;
-  height: 100vh;
   background-color: #003f32;
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm20 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM10 37a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm10-17h20v20H20V20zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' fill='%230d8683' fill-opacity='0.09' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
@@ -25,11 +24,10 @@ body {
 .game-container {
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
   width: 530px;
-  /* height: auto; */
+  /* height: 90vh; */
   position: relative;
   background: rgba(255, 255, 255, 0.5);
   user-select: none;
-  margin-top: 100px;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -39,22 +37,33 @@ body {
   color: white;
   font-family: var(--myFont);
   font-size: 24px;
-  height: 80px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+h1 {
+  text-align: center;
+  margin: 0;
+  font-size: 32px;
+  margin: 16px 0;
+}
 
 .card {
-  margin: 5px auto 10px;
-  /* height: 600px; */
+  margin: 5px auto 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Splash Page -------------------- */
 input[type="radio"] {
   opacity: 0;
   width: 10%;
-  height: 65px;
+  height: 55px;
   position: relative;
   /* top: -40px; */
   cursor: pointer;
@@ -62,17 +71,16 @@ input[type="radio"] {
 }
 
 .selection-container {
-  position: relative;
-  top: 65px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  margin: 32px 0;
 }
 
 .radio-container {
   width: 90%;
-  margin: 25px;
+  margin: 8px;
   cursor: pointer;
   border: 2px solid black;
   border-radius: 5px;
@@ -84,7 +92,7 @@ input[type="radio"] {
 
 label {
   width: 30%;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .selected-label {
@@ -110,7 +118,7 @@ label {
 }
 
 .selection-footer {
-  top: 134px;
+  /* top: 134px; */
 }
 
 /* Game Page -------------------------- */
@@ -210,6 +218,9 @@ button:active {
   width: 90%;
   background: var(--primary-color);
 }
+#start-form {
+  width: 100%;
+}
 
 /* Countdown Page ---------------------- */
 .countdown {
@@ -289,16 +300,12 @@ button:active {
   }
 
   .selection-container {
-    top: 100px;
+    /* top: 100px; */
   }
 
   .radio-container {
     width: 93%;
     margin: 15px;
-  }
-
-  label {
-    font-size: 1.7rem;
   }
 
   .best-score {
@@ -307,7 +314,7 @@ button:active {
   }
 
   .selection-footer {
-    top: 183px;
+    /* top: 183px; */
   }
 }
 
