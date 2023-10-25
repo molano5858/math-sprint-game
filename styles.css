@@ -14,9 +14,9 @@
 body {
   margin: 0;
   font-family: var(--myFont);
-  overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #003f32;
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm20 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM10 37a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm10-17h20v20H20V20zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' fill='%230d8683' fill-opacity='0.09' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
@@ -24,12 +24,16 @@ body {
 .game-container {
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
   width: 530px;
-  /* height: 90vh; */
+  height: 95vh;
   position: relative;
   background: rgba(255, 255, 255, 0.5);
   user-select: none;
   border-radius: 16px;
   overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
 
 .header {
@@ -41,6 +45,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 70px;
 }
 h1 {
   text-align: center;
@@ -50,13 +55,22 @@ h1 {
 }
 
 .card {
-  margin: 5px auto 0px;
-  height: 100%;
+  position: absolute;
+  bottom: 0;
   width: 100%;
+  height: calc(100% - 70px);
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
   flex-direction: column;
+}
+#start-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 }
 
 /* Splash Page -------------------- */
@@ -72,10 +86,11 @@ input[type="radio"] {
 
 .selection-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  margin: 32px 0;
+  width: 100%;
+  margin: auto 0;
 }
 
 .radio-container {
@@ -218,17 +233,18 @@ button:active {
   width: 90%;
   background: var(--primary-color);
 }
-#start-form {
-  width: 100%;
-}
 
 /* Countdown Page ---------------------- */
 .countdown {
-  margin-top: 45%;
   font-size: 100px;
   text-align: center;
   user-select: none;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Score Page ------------------------- */
@@ -271,19 +287,22 @@ button:active {
 /* Media Query: Laptop */
 @media screen and (max-width: 1800px) {
   .game-container {
-    margin-top: 35px;
+    margin-top: 24px;
   }
 
   .selected-item {
     top: 380px;
   }
 }
+.hidden {
+  display: none;
+}
 
 /* Media Query: Large Smartphone (Vertical) */
 @media screen and (max-width: 500px) {
   .game-container {
-    width: 100%;
-    margin-top: 0;
+    width: 90vw;
+    margin-top: 8px;
     border: none;
   }
 
@@ -293,28 +312,31 @@ button:active {
 
   .header {
     font-size: 1.2rem;
+    height: 50px;
+  }
+  label {
+    font-size: 16px;
   }
 
   .countdown {
-    margin-top: 60%;
-  }
-
-  .selection-container {
-    /* top: 100px; */
+    /* margin-top: calc(40% - 60px); */
   }
 
   .radio-container {
     width: 93%;
-    margin: 15px;
+    margin: 8px;
   }
 
   .best-score {
-    font-size: 1rem;
+    font-size: 0.8rem;
     left: 245px;
   }
 
+  button {
+    font-size: 18px;
+  }
   .selection-footer {
-    /* top: 183px; */
+    height: 70px;
   }
 }
 

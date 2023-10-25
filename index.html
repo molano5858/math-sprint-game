@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Math Sprint Game</title>
     <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <!-- Game Container -->
@@ -15,7 +15,7 @@
         <h1>Math Sprint Game</h1>
       </div>
       <!-- splash page -->
-      <div class="card" id="splash-page">
+      <div class="card hidden" id="splash-page">
         <form id="start-form">
           <div class="selection-container">
             <!-- 10 questions radio input -->
@@ -61,7 +61,12 @@
           </div>
         </form>
       </div>
+      <!-- Countdown page -->
+      <div class="countdown" id="countdown-page">
+        <h1 class="countdown">3</h1>
+      </div>
     </div>
+
     <!-- Script -->
     <script src="script.js"></script>
   </body>
