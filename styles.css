@@ -149,7 +149,8 @@ label {
 
 .item-container {
   width: 100%;
-  height: 552px;
+  /* height: 552px; */
+  height: calc(100% - 90px);
   overflow-y: scroll;
   position: relative;
   -ms-overflow-style: none;
@@ -175,7 +176,7 @@ label {
 .selected-item {
   background: var(--select-color);
   position: fixed;
-  /* top: 443px; */
+  top: calc(50% - 40px);
   z-index: -1;
   width: 530px;
   height: 80px;
@@ -287,15 +288,26 @@ button:active {
   color: var(--danger);
 }
 
+.top-spacer {
+  height: calc(50% - 40px);
+  width: 100%;
+  margin: 0;
+}
+.bottom-spacer {
+  height: calc(50% - 40px);
+  width: 100%;
+  margin: 0;
+}
+
 /* Media Query: Laptop */
 @media screen and (max-width: 1800px) {
   .game-container {
     margin-top: 24px;
   }
 
-  .selected-item {
+  /* .selected-item {
     top: 380px;
-  }
+  } */
 }
 .hidden {
   display: none;
