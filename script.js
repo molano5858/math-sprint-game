@@ -83,6 +83,29 @@ function createEquations() {
 //   itemContainer.appendChild(bottomSpacer);
 // }
 
+// display countdown 3, 2, 1, GO!!
+function countdownStart() {
+  countdown.textContent = "3";
+  setTimeout(() => {
+    countdown.textContent = "2";
+  }, 1000);
+  setTimeout(() => {
+    countdown.textContent = "1";
+  }, 2000);
+  setTimeout(() => {
+    countdown.textContent = "Go!!!";
+    countdownPage.classList.add("hidden");
+    gamePage.classList.remove("hidden");
+  }, 3000);
+}
+
+// navigate from splash page to countdown page
+function showCountdown() {
+  countdownPage.classList.remove("hidden");
+  splashPage.classList.add("hidden");
+  countdownStart();
+}
+
 // get value from selected radio button
 function getRadioValue() {
   let radioValue;
@@ -97,9 +120,11 @@ function getRadioValue() {
 // decide amount of questions
 function selectQuestionAmoung(event) {
   event.preventDefault();
-
   questionsAmount = getRadioValue();
-  console.log("question amount", questionsAmount);
+  // checking if user select any value
+  if (questionsAmount) {
+    showCountdown();
+  }
 }
 
 startForm.addEventListener("click", () => {
