@@ -6,7 +6,7 @@
 :root {
   --primary-color: rgb(0, 92, 77);
   --select-color: dodgerblue;
-  --success: rgb(15, 158, 2);
+  --success: rgb(11, 116, 2);
   --danger: rgb(214, 23, 23);
   --myFont: "Figtree", sans-serif;
 }
@@ -148,6 +148,7 @@ label {
 }
 
 .item-container {
+  width: 100%;
   height: 552px;
   overflow-y: scroll;
   position: relative;
@@ -174,9 +175,9 @@ label {
 .selected-item {
   background: var(--select-color);
   position: fixed;
-  top: 443px;
+  /* top: 443px; */
   z-index: -1;
-  width: 529px;
+  width: 530px;
   height: 80px;
 }
 
@@ -235,16 +236,18 @@ button:active {
 }
 
 /* Countdown Page ---------------------- */
-.countdown {
-  font-size: 100px;
-  text-align: center;
-  user-select: none;
-  cursor: pointer;
+.countdown-page {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.countdown {
+  font-size: 100px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
 }
 
 /* Score Page ------------------------- */
@@ -308,6 +311,7 @@ button:active {
 
   .selected-item {
     top: 345px;
+    width: 100%;
   }
 
   .header {
