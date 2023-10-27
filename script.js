@@ -40,10 +40,25 @@ let finalTimeDisplay = "0.0s";
 // Scroll
 let valueY = 0; // this value will change when we answer each question
 
+// reset the game
+function playAgain() {
+  gamePage.addEventListener("click", startTimer);
+  scorePage.classList.add("hidden");
+  splashPage.classList.remove("hidden");
+  equationsArray = [];
+  playerGuessArray = [];
+  valueY = 0;
+  playAgainBtn.classList.add("hidden");
+}
+
 // Show score page
-function showScorePAge() {
+function showScorePage() {
   gamePage.classList.add("hidden");
   scorePage.classList.remove("hidden");
+  //Show Play again button after 1s
+  setTimeout(() => {
+    playAgainBtn.classList.remove("hidden");
+  }, 1000);
 }
 
 // Format & Display time in DOM
@@ -51,10 +66,12 @@ function scoresToDOM() {
   finalTime = finalTime.toFixed(1);
   baseTime = timePlayed.toFixed(1);
   penaltyTime = penaltyTime.toFixed(1);
-  baseTimeEl.textContent = `Base time. ${baseTime}`;
-  penaltyTimeEl.textContent = `Penalty time: +${penaltyTime}`;
+  baseTimeEl.textContent = `Base time. ${baseTime}s`;
+  penaltyTimeEl.textContent = `Penalty time: +${penaltyTime}s`;
   finalTimeEl.textContent = `${finalTime}s`;
-  showScorePAge();
+  // here the game is over so container scroll to reset to see the equations like the first game
+  itemContainer.scrollTo({ top: "0", behavior: "instant" });
+  showScorePage();
 }
 
 // Stop timer, process results, go to score page
