@@ -38,7 +38,24 @@ let finalTime = 0;
 let finalTimeDisplay = "0.0s";
 
 // Scroll
-let valueY = 0; // this value will change when we answer each questio
+let valueY = 0; // this value will change when we answer each question
+
+// Show score page
+function showScorePAge() {
+  gamePage.classList.add("hidden");
+  scorePage.classList.remove("hidden");
+}
+
+// Format & Display time in DOM
+function scoresToDOM() {
+  finalTime = finalTime.toFixed(1);
+  baseTime = timePlayed.toFixed(1);
+  penaltyTime = penaltyTime.toFixed(1);
+  baseTimeEl.textContent = `Base time. ${baseTime}`;
+  penaltyTimeEl.textContent = `Penalty time: +${penaltyTime}`;
+  finalTimeEl.textContent = `${finalTime}s`;
+  showScorePAge();
+}
 
 // Stop timer, process results, go to score page
 function checkTime() {
@@ -62,6 +79,7 @@ function checkTime() {
       "final time",
       finalTime
     );
+    scoresToDOM();
   }
 }
 
