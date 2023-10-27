@@ -22,6 +22,7 @@ const playAgainBtn = document.querySelector(".play-again");
 let questionsAmount = 0;
 let equationsArray = [];
 let playerGuessArray = [];
+let bestScoresArray = [];
 
 // Game Page
 let firstNumber = 0;
@@ -35,10 +36,59 @@ let timePlayed = 0;
 let bestTime = 0;
 let penaltyTime = 0;
 let finalTime = 0;
-let finalTimeDisplay = "0.0s";
+let finalTimeDisplay = "0.0";
 
 // Scroll
 let valueY = 0; // this value will change when we answer each question
+
+// Refresh best scores from localStorage
+function bestScoresToDOM() {
+  bestScores.forEach((score, index) => {
+    const bestScoreEl = score;
+    bestScoreEl.textContent = `${bestScoresArray[index].bestScore}s`;
+  });
+}
+
+// check localStorage for best socres and set best scores from there
+function getSavedBestScores() {
+  if (localStorage.getItem("bestScores")) {
+    bestScoresArray = JSON.parse(localStorage.bestScores);
+  } else {
+    bestScoresArray = [
+      { question: 10, bestScore: finalTimeDisplay },
+      { question: 25, bestScore: finalTimeDisplay },
+      { question: 50, bestScore: finalTimeDisplay },
+      { question: 99, bestScore: finalTimeDisplay },
+    ];
+    localStorage.setItem("bestScores", JSON.stringify(bestScoresArray));
+  }
+  bestScoresToDOM();
+}
+
+// update bestScoreArray
+function updateBestScore() {
+  bestScoresArray.forEach((score, index) => {
+    // select the correct best score to update
+    if (questionsAmount == score.question) {
+      console.log("entre aqui");
+      // return best score as a number with 1 decimal
+      const savedBestScore = Number(bestScoresArray[index].bestScore);
+      console.log(
+        "deberia ser un numero",
+        typeof Number(bestScoresArray[index].bestScore)
+      );
+      console.log("Saved best score", savedBestScore);
+      if (savedBestScore === 0 || savedBestScore > finalTime) {
+        bestScoresArray[index].bestScore = finalTimeDisplay;
+        console.log("Aqui tambien entre");
+      }
+    }
+  });
+  // update splash page with best scores
+  bestScoresToDOM();
+  // Save the localStorage
+  localStorage.setItem("bestScores", JSON.stringify(bestScoresArray));
+}
 
 // reset the game
 function playAgain() {
@@ -63,12 +113,13 @@ function showScorePage() {
 
 // Format & Display time in DOM
 function scoresToDOM() {
-  finalTime = finalTime.toFixed(1);
+  finalTimeDisplay = finalTime.toFixed(1);
   baseTime = timePlayed.toFixed(1);
   penaltyTime = penaltyTime.toFixed(1);
   baseTimeEl.textContent = `Base time. ${baseTime}s`;
   penaltyTimeEl.textContent = `Penalty time: +${penaltyTime}s`;
-  finalTimeEl.textContent = `${finalTime}s`;
+  finalTimeEl.textContent = `${finalTimeDisplay}s`;
+  updateBestScore();
   // here the game is over so container scroll to reset to see the equations like the first game
   itemContainer.scrollTo({ top: "0", behavior: "instant" });
   showScorePage();
@@ -260,3 +311,6 @@ startForm.addEventListener("click", () => {
 // event listeners startform
 startForm.addEventListener("submit", selectQuestionAmoung);
 gamePage.addEventListener("click", startTimer);
+
+// check if there is a bestScore in localStorage
+getSavedBestScores();
