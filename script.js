@@ -253,18 +253,20 @@ function populateGamePage() {
 
 // display countdown 3, 2, 1, GO!!
 function countdownStart() {
-  countdown.textContent = "3";
-  setTimeout(() => {
-    countdown.textContent = "2";
+  let count = 5;
+  countdown.textContent = count;
+  const intervalTime = setInterval(() => {
+    count--;
+    if (count === 0) {
+      countdown.textContent = "Go!!!";
+    } else if (count == -1) {
+      countdownPage.classList.add("hidden");
+      gamePage.classList.remove("hidden");
+      clearInterval(intervalTime);
+    } else {
+      countdown.textContent = count;
+    }
   }, 1000);
-  setTimeout(() => {
-    countdown.textContent = "1";
-  }, 2000);
-  setTimeout(() => {
-    countdown.textContent = "Go!!!";
-    countdownPage.classList.add("hidden");
-    gamePage.classList.remove("hidden");
-  }, 3000);
 }
 
 // navigate from splash page to countdown page
@@ -272,7 +274,6 @@ function showCountdown() {
   countdownPage.classList.remove("hidden");
   splashPage.classList.add("hidden");
   countdownStart();
-  // createEquations();
   populateGamePage();
 }
 
